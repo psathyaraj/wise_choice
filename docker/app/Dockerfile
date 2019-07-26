@@ -10,8 +10,13 @@ RUN apt-get update \
 
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
+
 ARG USER_ID
 
 RUN usermod -u $USER_ID www-data
 
 RUN chown -R www-data:www-data /var/www/html
+
+RUN docker-php-ext-install pdo pdo_mysql
+
+RUN chown -R www-data:www-data /var/www/

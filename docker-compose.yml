@@ -6,9 +6,9 @@ services:
       args:
        - USER_ID=$USER_ID
       dockerfile: Dockerfile
-    image: ychoice/app
+    image: soccer/app
     environment:
-          - VIRTUAL_HOST=ychoices
+          - VIRTUAL_HOST=soccer
     volumes:
      - .:/var/www/html
     ports:
@@ -21,11 +21,11 @@ services:
       - "3306:3306"
      environment:
        MYSQL_ROOT_PASSWORD: "secret"
-       MYSQL_DATABASE: "ychoice"
-       MYSQL_USER: "ychoice"
-       MYSQL_PASSWORD: "ychoice"
+       MYSQL_DATABASE: "soccer"
+       MYSQL_USER: "soccer"
+       MYSQL_PASSWORD: "secret"
      volumes:
-       - /home/ychoice/mysqldata:/var/lib/mysql
+       - /home/soccer/mysqldata:/var/lib/mysql
        - ./docker/db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
      networks:
        - ydnet
